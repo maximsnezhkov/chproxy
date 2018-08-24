@@ -212,7 +212,7 @@ func listenAndServe(ln net.Listener, h http.Handler, maxResponseTime time.Durati
 	s := &http.Server{
 		TLSNextProto: make(map[string]func(*http.Server, *tls.Conn, http.Handler)),
 		Handler:      h,
-		ReadTimeout:  time.Minute,
+		ReadTimeout:  maxResponseTime,
 		WriteTimeout: maxResponseTime,
 		IdleTimeout:  time.Minute * 10,
 
